@@ -16,7 +16,7 @@ class CreateQuickBooksTokensTable extends Migration
     {
         Schema::create('quickbooks_tokens', function (Blueprint $table) {
             $school_id_type = DB::getSchemaBuilder()
-                              ->getColumnType('school', 'id') === 'bigint' ? 'unsignedBigInteger' : 'unsignedInteger';
+                              ->getColumnType('schools', 'id') === 'bigint' ? 'unsignedBigInteger' : 'unsignedInteger';
 
             $table->bigIncrements('id');
             $table->{$school_id_type}('school_id');
