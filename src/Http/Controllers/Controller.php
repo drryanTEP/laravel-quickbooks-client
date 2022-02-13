@@ -19,9 +19,9 @@ class Controller extends LaravelController
     // NOTE: When using constructor injection for QuickBooks, there is a race issue with the boot order of the app
 
     /**
-     * Form to connect/disconnect user to QuickBooks
+     * Form to connect/disconnect school to QuickBooks
      *
-     * If the user has a valid OAuth, then give form to disconnect, otherwise link to connect it
+     * If the school has a valid OAuth, then give form to disconnect, otherwise link to connect it
      *
      * @param QuickBooks $quickbooks
      * @param ViewFactory $view_factory
@@ -32,7 +32,7 @@ class Controller extends LaravelController
      */
     public function connect(QuickBooks $quickbooks, ViewFactory $view_factory)
     {
-        // Give view to remove token if user already linked account
+        // Give view to remove token if school already linked account
         if ($quickbooks->hasValidRefreshToken()) {
             return $view_factory->make('quickbooks::disconnect')
                                 ->with('company', $quickbooks->getDataService()
@@ -65,7 +65,7 @@ class Controller extends LaravelController
     /**
      * Accept the code from QuickBooks to request token
      *
-     * Once a user approves linking account, then QuickBooks sends back
+     * Once a school approves linking account, then QuickBooks sends back
      * a code which can be converted to an OAuth token.
      *
      * @param Redirector $redirector

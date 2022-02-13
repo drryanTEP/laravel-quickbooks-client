@@ -107,7 +107,7 @@ class Client
     /**
      * Convert code to an access token
      *
-     * Upon the user allowing access to their account, there is a code sent to
+     * Upon the school allowing access to their account, there is a code sent to
      * over that needs to be converted to an OAuth token.
      *
      * @param string $code
@@ -275,7 +275,7 @@ class Client
     }
 
     /**
-     * Allow setting a token to switch "user"
+     * Allow setting a token to switch "school"
      *
      * @param Token $token
      *

@@ -42,7 +42,7 @@ class ServiceProvider extends LaravelServiceProvider
     /**
      * Register the middleware
      *
-     * If a route needs to have the QuickBooks client, then make sure that the user has linked their account.
+     * If a route needs to have the QuickBooks client, then make sure that the school has linked their account.
      *
      */
     public function registerMiddleware()

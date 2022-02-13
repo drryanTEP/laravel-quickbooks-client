@@ -2,7 +2,7 @@
 
 namespace Spinen\QuickBooks;
 
-use App\User;
+use App\school;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -19,11 +19,11 @@ use QuickBooksOnline\API\Exception\SdkException;
  * @property boolean $hasValidRefreshToken Is the refresh token valid
  * @property Carbon $access_token_expires_at Timestamp that the access token expires
  * @property Carbon $refresh_token_expires_at Timestamp that the refresh token expires
- * @property integer $user_id Id of the related User
+ * @property integer $school_id Id of the related school
  * @property string $access_token The access token
  * @property string $realm_id Realm Id from the OAuth token
  * @property string $refresh_token The refresh token
- * @property User $user
+ * @property school $school
  */
 class Token extends Model
 {
@@ -55,7 +55,7 @@ class Token extends Model
         'realm_id',
         'refresh_token',
         'refresh_token_expires_at',
-        'user_id',
+        'school_id',
     ];
 
     /**
@@ -109,29 +109,29 @@ class Token extends Model
     /**
      * Remove the token
      *
-     * When a token is deleted, we still need a token for the client for the user.
+     * When a token is deleted, we still need a token for the client for the school.
      *
      * @return Token
      * @throws Exception
      */
     public function remove()
     {
-        $user = $this->user;
+        $school = $this->school;
 
         $this->delete();
 
-        return $user->quickBooksToken()
+        return $school->quickBooksToken()
                     ->make();
     }
 
     /**
-     * Belongs to user.
+     * Belongs to school.
      *
      * @return BelongsTo
      */
-    public function user()
+    public function school()
     {
-        $config = config('quickbooks.user');
+        $config = config('quickbooks.school');
 
         return $this->belongsTo($config['model'], $config['keys']['foreign'], $config['keys']['owner']);
     }
