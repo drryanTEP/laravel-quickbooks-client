@@ -76,7 +76,7 @@ class Filter
     public function handle(Request $request, Closure $next)
     {
         if (!$this->quickbooks->hasValidRefreshToken()) {
-            // Set intended route, so that after linking account, user is put where they were going
+            // Set intended route, so that after linking account, school is put where they were going
             $this->session->put('url.intended', $this->url_generator->to($request->path()));
 
             return $this->redirector->route('quickbooks.connect');

@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\School;
 
 return [
 
@@ -77,20 +77,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Properties for control the "user" relationship in Token
+    | Properties for control the "school" relationship in Token
     |--------------------------------------------------------------------------
     |
-    | The Token class has a "user" relationship, and these properties allow
+    | The Token class has a "school" relationship, and these properties allow
     | configuring the relationship.
     |
     */
 
-    'user' => [
+    'school' => [
         'keys'  => [
-            'foreign' => 'user_id',
+            'foreign' => 'school_id',
             'owner'   => 'id',
         ],
-        'model' => User::class,
+        'model' => School::class,
     ],
 
 ];
