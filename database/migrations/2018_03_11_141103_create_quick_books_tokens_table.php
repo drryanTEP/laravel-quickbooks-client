@@ -30,7 +30,7 @@ class CreateQuickBooksTokensTable extends Migration
 
             $table->foreign('school_id')
                   ->references('id')
-                  ->on('school')
+                  ->on('schools')
                   ->onDelete('cascade');
         });
     }
