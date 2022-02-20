@@ -1,7 +1,5 @@
 <?php
 
-use App\School;
-
 return [
 
     /*
@@ -90,7 +88,7 @@ return [
             'foreign' => 'school_id',
             'owner'   => 'id',
         ],
-        'model' => School::class,
+        'model' => App\Models\School::class,
     ],
 
 ];
