@@ -84,6 +84,6 @@ class Controller extends LaravelController
 
         $request->session()->flash('success', 'Connected to QuickBooks');
 
-        return $redirector->intended($url_generator->route('quickbooks.connect'));
+        return $redirector->intended($url_generator->route('schools.accounting'));
     }
 }
