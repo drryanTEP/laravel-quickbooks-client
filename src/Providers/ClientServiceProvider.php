@@ -42,7 +42,7 @@ class ClientServiceProvider extends LaravelServiceProvider
     {
         $this->app->bind(Client::class, function (Application $app) {
             if( request()->serverMemo['dataMeta']['models']['form']['id'] ?? false ) {
-                $school = Form::find( request()->serverMemo['dataMeta']['models']['form']['id'] )->school();
+                $school = Form::find( request()->serverMemo['dataMeta']['models']['form']['id'] )->school;
 
                 $token = ( $school->quickBooksToken)
                 ? :  $school->quickBooksToken()
