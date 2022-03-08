@@ -5,6 +5,7 @@ namespace Spinen\QuickBooks\Providers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Spinen\QuickBooks\Client;
+use App\Models\Form;
 
 /**
  * Class ClientServiceProvider
@@ -40,8 +41,9 @@ class ClientServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $this->app->bind(Client::class, function (Application $app) {
-            if( request()->routeIs('forms.public-*') ) {
-                $school = request()->form->school();
+            if( request()->serverMemo['dataMeta']['models']['form']['id'] ?? false ) {
+                $school = Form::find( request()->serverMemo['dataMeta']['models']['form']['id'] )->school();
+
                 $token = ( $school->quickBooksToken)
                 ? :  $school->quickBooksToken()
                               ->make();
