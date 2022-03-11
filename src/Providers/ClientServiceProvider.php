@@ -48,8 +48,8 @@ class ClientServiceProvider extends LaravelServiceProvider
                 ? :  $school->quickBooksToken()
                               ->make();
             } else {
-                $token = ($app->auth->user->school()->quickBooksToken)
-                ? : $app->auth->user->school()
+                $token = ($app->auth->user()->getSchool()->quickBooksToken)
+                ? : $app->auth->user()->getSchool()
                               ->quickBooksToken()
                               ->make();
             }
