@@ -57,7 +57,7 @@ class ClientServiceProvider extends LaravelServiceProvider
                 }
 
                 $token = ($school->quickBooksToken)
-                ? : $$school->quickBooksToken()
+                ? : $school->quickBooksToken()
                               ->make();
             }
 
