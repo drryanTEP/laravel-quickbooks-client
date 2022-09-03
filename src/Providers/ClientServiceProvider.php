@@ -6,6 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Spinen\QuickBooks\Client;
 use App\Models\Form;
+use App\Models\School;
 
 /**
  * Class ClientServiceProvider
@@ -48,9 +49,15 @@ class ClientServiceProvider extends LaravelServiceProvider
                 ? :  $school->quickBooksToken()
                               ->make();
             } else {
-                $token = ($app->auth->user()->getSchool()->quickBooksToken)
-                ? : $app->auth->user()->getSchool()
-                              ->quickBooksToken()
+                
+                 if( request()->route('school') ) {
+                     $school = School::find( request()->route('school') );
+                } else {
+                    $school = $app->auth->user->school();
+                }
+
+                $token = ($school->quickBooksToken)
+                ? : $$school->quickBooksToken()
                               ->make();
             }
 
