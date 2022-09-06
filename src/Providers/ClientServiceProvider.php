@@ -53,7 +53,7 @@ class ClientServiceProvider extends LaravelServiceProvider
                  if( request()->route('school') ) {
                      $school = School::find( request()->route('school') );
                 } else {
-                    $school = auth()->user->getSchool();
+                    $school = auth()->user()->getSchool();
                 }
 
                 $token = ($school->quickBooksToken)
