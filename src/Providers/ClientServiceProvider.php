@@ -48,8 +48,13 @@ class ClientServiceProvider extends LaravelServiceProvider
                 $token = ( $school->quickBooksToken)
                 ? :  $school->quickBooksToken()
                               ->make();
+            } elseif( request()->serverMemo['dataMeta']['models']['school']['id'] ?? false  ) {
+                $school = School::find( request()->serverMemo['dataMeta']['models']['school']['id'] );
+
+                $token = ( $school->quickBooksToken)
+                ? :  $school->quickBooksToken()
+                              ->make();
             } else {
-                
                  if( request()->route('school') ) {
                      $school = School::find( request()->route('school') );
                 } else {
